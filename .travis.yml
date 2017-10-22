@@ -1,0 +1,10 @@
+langauge: cpp
+os:
+    - linux
+    - osx
+compiler:
+    - gcc
+    - clang
+script:
+    - make
+    - make test

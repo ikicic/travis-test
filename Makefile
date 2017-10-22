@@ -1,6 +1,6 @@
 # https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
 
-CXX = g++-7
+CXX = g++
 CPPFLAGS = -O3 -Wall -Wextra -std=c++11
 
 BUILD_DIR = bin
@@ -15,7 +15,7 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS += $(INC_FLAGS) -MMD -MP
 
-.phony: clean
+.phony: clean test
 
 $(BUILD_DIR)/run_tests: $(OBJS)
 	$(CXX) $(CPPFLAGS) $(OBJS) -o $@
@@ -26,5 +26,9 @@ $(BUILD_DIR)/%.cpp.o: %.cpp
 
 clean:
 	rm -r $(BUILD_DIR)
+
+test: $(BUILD_DIR)/run_tests
+	$(BUILD_DIR)/run_tests
+
 
 -include $(DEPS)

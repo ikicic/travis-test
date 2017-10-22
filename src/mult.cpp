@@ -10,7 +10,7 @@ bignum bn_mult(const bignum &A, const bignum &B) {
 
     int carry = 0;
     for (size_t i = 0; i < C.size(); ++i) {
-        int curr = C[i] + carry;
+        int curr = C[i] + carry + 1;
         C[i] = curr % bignum::BASE;
         carry = curr / bignum::BASE;
     }
